@@ -1,17 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="no">
 <head>
-    <script src="DeltagerManager.js " defer ></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Deltagerregistrering</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- JavaScript -->
+    <script src="DeltagerManager.js" defer></script>
 </head>
 <body> 
-     <input type="number"  id="startnummer"/>
-     <input type="text"  id="navn"/>
-     <input type="time"  id="slutTid">
-     <button type="button" id="registrerDeltager">Registrer Deltager</button>
-     <button type="button" id="visDeltagere">Vis Deltagere</button>
-     <div></div>
+
+    <!-- Startnummer -->
+    <label for="startnummer">Startnummer:</label>
+    <span id="feilStartnummer" class="error-message"></span>
+    <input type="number" id="startnummer" placeholder="Startnummer" required min="1"
+           title="Startnummer må være et tall større enn 0"/>
+
+    <!-- Navn -->
+    <label for="navn">Navn:</label>
+    <span id="feilNavn" class="error-message"></span>
+    <input type="text" id="navn" placeholder="Navn"
+           required pattern="[A-ZÆØÅ][a-zA-ZæøåÆØÅ\\- ]*"
+           title="Navnet må starte med stor bokstav og kan inneholde bokstaver, bindestrek og mellomrom"/>
+
+    <!-- Slutttid -->
+    <label for="slutTid">Sluttid:</label>
+    <span id="feilSluttid" class="error-message"></span>
+    <input type="time" id="slutTid" required
+           title="Velg en gyldig sluttid"/>
+
+    <!-- Knapper -->
+    <button type="button" id="registrerDeltager">Registrer Deltager</button>
+    <button type="button" id="visDeltagere">Vis Deltagere</button>
+
+    <!-- Resultat / deltakerliste -->
+    <div id="resultat"></div>
+
 </body>
 </html>

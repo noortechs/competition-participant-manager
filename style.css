@@ -1,0 +1,76 @@
+/* Generell styling */
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  background-color: #f9f9f9;
+}
+
+input, button {
+  display: block;
+  margin: 10px 0;
+  padding: 8px;
+  font-size: 1em;
+}
+
+/* Knapper */
+button {
+  background-color: #4CAF50; /* grønn */
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* Område for deltakerliste */
+div {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: white;
+  min-height: 50px;
+}
+
+/* Feil: rød ramme på input */
+.input-error {
+  border: 2px solid red;
+  background-color: #ffe6e6;
+}
+
+/* Feilmeldingstekst */
+.error-message {
+  color: red;
+  font-size: 0.9em;
+  margin-bottom: 5px;
+  display: block;
+}
+/* Generelt utseende for inputfelt */
+input {
+  display: block;
+  margin: 10px 0;
+  padding: 8px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+/* Gyldig input (grønn ramme) */
+input:valid {
+  border-color: green;
+}
+
+/* Ugyldig input (rød ramme) */
+input:invalid {
+  border-color: red;
+}
+
+/* Feilmeldinger */
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-bottom: 5px;
+  display: block;
+}
