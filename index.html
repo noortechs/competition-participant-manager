@@ -12,7 +12,10 @@
     <script src="DeltagerManager.js" defer></script>
 </head>
 <body> 
-
+<form>
+       <fieldset>
+ <fieldset>
+<legend>Registrer Deltager</legend>
     <!-- Startnummer -->
     <label for="startnummer">Startnummer:</label>
     <span id="feilStartnummer" class="error-message"></span>
@@ -34,10 +37,17 @@
 
     <!-- Knapper -->
     <button type="button" id="registrerDeltager">Registrer Deltager</button>
+
+    <label for="fra">Fra: </label>
+    <input type="time"  id="fra"/>
+    <label for="til">Til: </label>
+    <input type="time"  id="til"/>
     <button type="button" id="visDeltagere">Vis Deltagere</button>
 
     <!-- Resultat / deltakerliste -->
     <div id="resultat"></div>
-
+    </fieldset>
+    </fieldset>
+</form>
 </body>
 </html>

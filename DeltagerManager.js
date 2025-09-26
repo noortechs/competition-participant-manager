@@ -9,6 +9,9 @@ const feilStartnummer = document.getElementById("feilStartnummer");
 const feilNavn = document.getElementById("feilNavn");
 const feilSluttid = document.getElementById("feilSluttid");
 
+const fra = document.getElementById("fra");
+const til = document.getElementById("til");
+
 let deltagerListe = [];
 
 registrerDeltager.addEventListener("click", function () {
@@ -47,11 +50,9 @@ registrerDeltager.addEventListener("click", function () {
             return;
         }
     }
-
     // 4. Sjekk navnets første bokstav
     let riktigNavn = navn.value;
     if (navn.value[0] !== navn.value[0].toUpperCase()) {
-        feilNavn.textContent = "Navnet må starte med stor bokstav. Jeg retter det for deg.";
         riktigNavn = navn.value[0].toUpperCase() + navn.value.slice(1);
     }
 
@@ -67,4 +68,19 @@ registrerDeltager.addEventListener("click", function () {
     navn.value = "";
     slutTid.value = "";
     startNummer.focus();
+});
+
+// Vise deltagere fra listen
+    function visTabel(){
+        let tiligste;
+        for(let deltager of deltagerListe){
+            tidligste = deltager.slutTid>0;
+            console.log(tidligster);
+        }
+    }
+
+visDeltagere.addEventListener("click", function(){
+    
+        resultat.textContent= fra.value.visTabel()+ "<br/>";
+    
 });
