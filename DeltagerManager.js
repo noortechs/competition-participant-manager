@@ -12,14 +12,19 @@ const feilSluttid = document.getElementById("feilSluttid");
 const fra = document.getElementById("fra");
 const til = document.getElementById("til");
 
+const feilFraTid = document.getElementById("feilFraTid");
+const feiTilTid = document.getElementById("feiTilTid");
+
 let deltagerListe = [];
 
-registrerDeltager.addEventListener("click", function () {
+registrerDeltager.addEventListener("click", () => {
+
+
+
     // 1. Nullstill feilmeldinger først
     feilStartnummer.textContent = "";
     feilNavn.textContent = "";
     feilSluttid.textContent = "";
-
     // 2. Sjekk tomme felt
     if (startNummer.value === "") {
         feilStartnummer.textContent = "Vennligst skriv startnummeret ditt.";
@@ -70,17 +75,56 @@ registrerDeltager.addEventListener("click", function () {
     startNummer.focus();
 });
 
-// Vise deltagere fra listen
-    function visTabel(){
-        let tiligste;
-        for(let deltager of deltagerListe){
-            tidligste = deltager.slutTid>0;
-            console.log(tidligster);
-        }
+// Hjelpefunksjon for å konvertere tid til minutter
+function tidTilMinutter(tid) {
+    let [timer, minutter] = tid.split(":").map(Number);
+    return timer * 60 + minutter;
+}
+
+function visTabel() {
+    let fraTid = fra.value;
+    let tilTid = til.value;
+
+    // Nullstill tidligere feilmelding
+    feiTilTid.textContent = "";
+
+    // Sjekk feil intervall
+    if (fraTid !== "" && tilTid !== "" && tidTilMinutter(fraTid) > tidTilMinutter(tilTid)) {
+        feiTilTid.textContent = "Fra-tid kan ikke være senere enn til-tid.";
+        til.focus();
+        return;
     }
 
-visDeltagere.addEventListener("click", function(){
-    
-        resultat.textContent= fra.value.visTabel()+ "<br/>";
-    
+    let filtrertDeltagerListe = [...deltagerListe];
+
+    if (fraTid === "" && tilTid === "") {
+        // vis alle
+    } 
+    else if (fraTid === "") {
+        filtrertDeltagerListe = filtrertDeltagerListe.filter(x => tidTilMinutter(x.slutTid) <= tidTilMinutter(tilTid));
+    } 
+    else if (tilTid === "") {
+        filtrertDeltagerListe = filtrertDeltagerListe.filter(x => tidTilMinutter(x.slutTid) >= tidTilMinutter(fraTid));
+    } 
+    else {
+        filtrertDeltagerListe = filtrertDeltagerListe.filter(d => {
+            let tid = tidTilMinutter(d.slutTid);
+            return tid >= tidTilMinutter(fraTid) && tid <= tidTilMinutter(tilTid);
+        });
+    }
+
+    let text = "";
+    let plassering = 1;
+    for (let deltager of filtrertDeltagerListe) {
+        text += plassering + ". Startnummer: " + deltager.startNummer +
+            ", Navn: " + deltager.navn + ", Sluttid: " + deltager.slutTid + "\n";
+        plassering++;
+    }
+
+    return text;
+}
+
+visDeltagere.addEventListener("click", function() {
+    resultat.innerText = "";
+    resultat.innerText = visTabel();
 });

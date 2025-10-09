@@ -74,3 +74,18 @@ input:invalid {
   margin-bottom: 5px;
   display: block;
 }
+.error-message {
+  color: red;
+  font-size: 0.9em;
+  margin-left: 5px;
+}
+
+#resultat {
+  margin-top: 15px;
+  white-space: pre-line; /* slik at \n vises som linjeskift */
+  font-family: monospace; /* gjør teksten jevnt justert */
+  background-color: #f6f6f6;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
